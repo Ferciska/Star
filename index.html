@@ -25,7 +25,7 @@
     <!-- Анкета -->
     <section class="contact-form">
       <h2>Заполните анкету</h2>
-      <form action="https://formspree.io/f/mqkldokp" method="POST">
+      <form id="survey-form" method="POST">
         <label for="nickname">1. Имя / Никнейм:</label>
         <input type="text" name="nickname" id="nickname" required><br>
 
@@ -90,26 +90,60 @@
   <script src="script.js"></script>
   <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("form");
+  const form = document.querySelector("#survey-form");
   if (!form) return;
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const name = form.querySelector("[name='name']").value;
-    const message = form.querySelector("[name='message']").value;
+    const nickname = form.querySelector("[name='nickname']").value;
+    const age = form.querySelector("[name='age']").value;
+    const timezone = form.querySelector("[name='timezone']").value;
+    const platform = form.querySelector("[name='platform']").value;
+    const license = form.querySelector("[name='license']").value;
+    const playTime = form.querySelector("[name='play_time']").value;
+    const experience = form.querySelector("[name='experience']").value;
+    const hobbies = form.querySelector("[name='hobbies']").value;
+    const teamExperience = form.querySelector("[name='team_experience']").value;
+    const mods = form.querySelector("[name='mods']").value;
+    const rules = form.querySelector("[name='rules']").value;
+    const buildSkills = form.querySelector("[name='build_skills']").value;
+    const playReason = form.querySelector("[name='play_reason']").value;
+    const whyStarHouse = form.querySelector("[name='why_star_house']").value;
+    const helpProject = form.querySelector("[name='help_project']").value;
 
-    const text = `Новая анкета:\nИмя: ${name}\nСообщение: ${message}`;
-    const chatId = "6011272640"; // например: 123456789
-    const botToken = "7779736455:AAEX1IT46gx2OSitkIICS8ME6oDGM8hWjlo"; // пример: 123456:ABC...
+    const text = `
+      Новая анкета:
+      Имя / Никнейм: ${nickname}
+      Возраст: ${age}
+      Часовой пояс / Город: ${timezone}
+      Платформа: ${platform}
+      Лицензия или пиратка: ${license}
+      Время для игры: ${playTime}
+      Опыт в Minecraft: ${experience}
+      Любимые занятия в игре: ${hobbies}
+      Опыт в командах / на серверах: ${teamExperience}
+      Используешь моды / аддоны?: ${mods}
+      Соблюдаешь ли правила и уважаешь других?: ${rules}
+      Умеешь ли строить?: ${buildSkills}
+      Играешь ли ты ради фана, командной игры или достижений?: ${playReason}
+      Почему хочешь в Star House?: ${whyStarHouse}
+      Готов ли помочь проекту чем-то ещё?: ${helpProject}
+    `;
+    const chatId = "6011272640"; // Твой ID в Telegram
+    const botToken = "7779736455:AAEX1IT46gx2OSitkIICS8ME6oDGM8hWjlo"; // Токен твоего бота
 
     fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: chatId, text: text })
     }).then(res => {
-      if (res.ok) alert("Анкета отправлена!");
-      else alert("Ошибка при отправке!");
+      if (res.ok) {
+        alert("Анкета отправлена!");
+        form.reset();
+      } else {
+        alert("Ошибка при отправке!");
+      }
     });
   });
 });
