@@ -88,5 +88,31 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("form");
+  if (!form) return;
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = form.querySelector("[name='name']").value;
+    const message = form.querySelector("[name='message']").value;
+
+    const text = `Новая анкета:\nИмя: ${name}\nСообщение: ${message}`;
+    const chatId = "6011272640"; // например: 123456789
+    const botToken = "7779736455:AAEX1IT46gx2OSitkIICS8ME6oDGM8hWjlo"; // пример: 123456:ABC...
+
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: chatId, text: text })
+    }).then(res => {
+      if (res.ok) alert("Анкета отправлена!");
+      else alert("Ошибка при отправке!");
+    });
+  });
+});
+  </script>
 </body>
 </html>
