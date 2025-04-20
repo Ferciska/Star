@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Star House — Minecraft Team</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🌟 Star House</h1>
+    <p class="slogan">Сияем вместе в Minecraft!</p>
+    <button id="theme-toggle">🌙 Переключить тему</button>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Привет!</h2>
+      <p>Рады, что ты заинтересовался нашим проектом.<br>
+        Star House — это тёплое комьюнити, интересные сборки и совместное выживание.<br>
+        Заполни анкету — и добро пожаловать в команду!
+      </p>
+    </section>
+
+    <!-- Анкета -->
+    <section class="contact-form">
+      <h2>Заполните анкету</h2>
+      <form action="https://formspree.io/f/mqkldokp" method="POST">
+        <label for="nickname">1. Имя / Никнейм:</label>
+        <input type="text" name="nickname" id="nickname" required><br>
+
+        <label for="age">2. Возраст:</label>
+        <input type="text" name="age" id="age" required><br>
+
+        <label for="timezone">3. Часовой пояс / Город:</label>
+        <input type="text" name="timezone" id="timezone" required><br>
+
+        <label for="platform">4. Платформа:</label>
+        <input type="text" name="platform" id="platform" required><br>
+
+        <label for="license">5. Лицензия или пиратка:</label>
+        <input type="text" name="license" id="license" required><br>
+
+        <label for="play_time">6. Время для игры:</label>
+        <input type="text" name="play_time" id="play_time" required><br>
+
+        <label for="experience">7. Опыт в Minecraft:</label>
+        <textarea name="experience" id="experience" required></textarea><br>
+
+        <label for="hobbies">8. Любимые занятия в игре:</label>
+        <input type="text" name="hobbies" id="hobbies" required><br>
+
+        <label for="team_experience">9. Опыт в командах / на серверах:</label>
+        <input type="text" name="team_experience" id="team_experience" required><br>
+
+        <label for="mods">10. Используешь моды / аддоны?:</label>
+        <input type="text" name="mods" id="mods"><br>
+
+        <label for="rules">11. Соблюдаешь ли правила и уважаешь других?:</label>
+        <select name="rules" id="rules" required>
+          <option value="Да">Да</option>
+          <option value="Нет">Нет</option>
+        </select><br>
+
+        <label for="build_skills">12. Умеешь ли строить?:</label>
+        <select name="build_skills" id="build_skills" required>
+          <option value="Да">Да</option>
+          <option value="Нет">Нет</option>
+          <option value="Немного">Немного</option>
+        </select><br>
+
+        <label for="play_reason">13. Играешь ли ты ради фана, командной игры или достижений?:</label>
+        <textarea name="play_reason" id="play_reason" required></textarea><br>
+
+        <label for="why_star_house">14. Почему хочешь в Star House?:</label>
+        <textarea name="why_star_house" id="why_star_house" required></textarea><br>
+
+        <label for="help_project">15. Готов ли помочь проекту чем-то ещё?:</label>
+        <textarea name="help_project" id="help_project"></textarea><br>
+
+        <button type="submit">Отправить</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Star House Team | Minecraft Forever!</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
