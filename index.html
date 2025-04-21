@@ -9,22 +9,21 @@
     :root {
       --bg: #ffffff;
       --text: #000000;
-      --input-bg: #f9f9f9;
-      --input-border: #ccc;
+      --input-bg: #f0f0f0;
+      --input-border: #888;
     }
-
     body.dark {
       --bg: #121212;
       --text: #ffffff;
-      --input-bg: #1e1e1e;
-      --input-border: #444;
+      --input-bg: #1f1f1f;
+      --input-border: #666;
     }
 
     body {
       background-color: var(--bg);
       color: var(--text);
-      transition: background 0.3s, color 0.3s;
       font-family: Arial, sans-serif;
+      transition: background 0.3s, color 0.3s;
     }
 
     input, textarea, select {
@@ -36,15 +35,15 @@
       padding: 10px 14px;
       margin: 10px 0 20px 0;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       font-size: 16px;
-      transition: all 0.2s ease-in-out;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: background 0.3s, color 0.3s, border 0.3s;
     }
 
     input:focus, textarea:focus, select:focus {
       outline: none;
       border-color: #00aaff;
-      box-shadow: 0 0 5px rgba(0,170,255,0.5);
+      box-shadow: 0 0 8px rgba(0,170,255,0.4);
     }
 
     label {
@@ -90,10 +89,9 @@
       </p>
     </section>
 
-    <!-- Анкета -->
     <section class="contact-form">
       <h2>Заполните анкету</h2>
-      <form action="https://formspree.io/f/mqkldokp" method="POST">
+      <form id="tgForm">
         <label for="nickname">1. Имя / Никнейм:</label>
         <input type="text" name="nickname" id="nickname" required>
 
@@ -154,6 +152,38 @@
     const toggleBtn = document.getElementById("theme-toggle");
     toggleBtn.addEventListener("click", () => {
       document.body.classList.toggle("dark");
+    });
+
+    // Отправка в Telegram
+    document.getElementById("tgForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const botToken = "7779736455:AAEX1IT46gx2OSitkIICS8ME6oDGM8hWjlo";
+      const chatId = "6011272640";
+
+      const formData = new FormData(this);
+      let text = "📨 *Новая анкета Star House:*\n\n";
+
+      formData.forEach((value, key) => {
+        text += `*${key}*: ${value}\n`;
+      });
+
+      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: text,
+          parse_mode: "Markdown"
+        })
+      }).then(res => {
+        if (res.ok) {
+          alert("Анкета успешно отправлена!");
+          this.reset();
+        } else {
+          alert("Ошибка отправки в Telegram!");
+        }
+      });
     });
   </script>
 </body>
