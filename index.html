@@ -5,6 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Star House — Minecraft Team</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    input, textarea, select {
+      width: 100%;
+      max-width: 500px;
+      padding: 10px 14px;
+      margin: 10px 0 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-size: 16px;
+      font-family: inherit;
+      transition: all 0.2s ease-in-out;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #00aaff;
+      box-shadow: 0 0 5px rgba(0,170,255,0.5);
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+
+    button[type="submit"] {
+      background: #00aaff;
+      color: white;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+
+    button[type="submit"]:hover {
+      background: #008ecc;
+    }
+
+    .contact-form {
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -25,58 +71,52 @@
     <!-- Анкета -->
     <section class="contact-form">
       <h2>Заполните анкету</h2>
-      <form id="survey-form" method="POST">
+      <form action="https://formspree.io/f/mqkldokp" method="POST">
         <label for="nickname">1. Имя / Никнейм:</label>
-        <input type="text" name="nickname" id="nickname" required><br>
+        <input type="text" name="nickname" id="nickname" required>
 
         <label for="age">2. Возраст:</label>
-        <input type="text" name="age" id="age" required><br>
+        <input type="text" name="age" id="age" required>
 
         <label for="timezone">3. Часовой пояс / Город:</label>
-        <input type="text" name="timezone" id="timezone" required><br>
+        <input type="text" name="timezone" id="timezone" required>
 
         <label for="platform">4. Платформа:</label>
-        <input type="text" name="platform" id="platform" required><br>
+        <input type="text" name="platform" id="platform" required>
 
-        <label for="license">5. Лицензия или пиратка:</label>
-        <input type="text" name="license" id="license" required><br>
+        <label for="telegram">5. Ваш юзернейм в Telegram:</label>
+        <input type="text" name="telegram" id="telegram" required>
 
-        <label for="play_time">6. Время для игры:</label>
-        <input type="text" name="play_time" id="play_time" required><br>
+        <label for="mc_version">6. Ваша версия Minecraft? (у нас 1.21.70):</label>
+        <input type="text" name="mc_version" id="mc_version" required>
 
         <label for="experience">7. Опыт в Minecraft:</label>
-        <textarea name="experience" id="experience" required></textarea><br>
+        <textarea name="experience" id="experience" required></textarea>
 
         <label for="hobbies">8. Любимые занятия в игре:</label>
-        <input type="text" name="hobbies" id="hobbies" required><br>
+        <input type="text" name="hobbies" id="hobbies" required>
 
         <label for="team_experience">9. Опыт в командах / на серверах:</label>
-        <input type="text" name="team_experience" id="team_experience" required><br>
+        <input type="text" name="team_experience" id="team_experience" required>
 
-        <label for="mods">10. Используешь моды / аддоны?:</label>
-        <input type="text" name="mods" id="mods"><br>
-
-        <label for="rules">11. Соблюдаешь ли правила и уважаешь других?:</label>
+        <label for="rules">10. Соблюдаешь ли правила и уважаешь других?:</label>
         <select name="rules" id="rules" required>
           <option value="Да">Да</option>
           <option value="Нет">Нет</option>
-        </select><br>
+        </select>
 
-        <label for="build_skills">12. Умеешь ли строить?:</label>
+        <label for="build_skills">11. Умеешь ли строить?:</label>
         <select name="build_skills" id="build_skills" required>
           <option value="Да">Да</option>
           <option value="Нет">Нет</option>
           <option value="Немного">Немного</option>
-        </select><br>
+        </select>
 
-        <label for="play_reason">13. Играешь ли ты ради фана, командной игры или достижений?:</label>
-        <textarea name="play_reason" id="play_reason" required></textarea><br>
+        <label for="why_star_house">12. Почему хочешь в Star House?:</label>
+        <textarea name="why_star_house" id="why_star_house" required></textarea>
 
-        <label for="why_star_house">14. Почему хочешь в Star House?:</label>
-        <textarea name="why_star_house" id="why_star_house" required></textarea><br>
-
-        <label for="help_project">15. Готов ли помочь проекту чем-то ещё?:</label>
-        <textarea name="help_project" id="help_project"></textarea><br>
+        <label for="help_project">13. Готов ли помочь проекту чем-то ещё?:</label>
+        <textarea name="help_project" id="help_project"></textarea>
 
         <button type="submit">Отправить</button>
       </form>
@@ -88,65 +128,5 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.querySelector("#survey-form");
-  if (!form) return;
-
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const nickname = form.querySelector("[name='nickname']").value;
-    const age = form.querySelector("[name='age']").value;
-    const timezone = form.querySelector("[name='timezone']").value;
-    const platform = form.querySelector("[name='platform']").value;
-    const license = form.querySelector("[name='license']").value;
-    const playTime = form.querySelector("[name='play_time']").value;
-    const experience = form.querySelector("[name='experience']").value;
-    const hobbies = form.querySelector("[name='hobbies']").value;
-    const teamExperience = form.querySelector("[name='team_experience']").value;
-    const mods = form.querySelector("[name='mods']").value;
-    const rules = form.querySelector("[name='rules']").value;
-    const buildSkills = form.querySelector("[name='build_skills']").value;
-    const playReason = form.querySelector("[name='play_reason']").value;
-    const whyStarHouse = form.querySelector("[name='why_star_house']").value;
-    const helpProject = form.querySelector("[name='help_project']").value;
-
-    const text = `
-      Новая анкета:
-      Имя / Никнейм: ${nickname}
-      Возраст: ${age}
-      Часовой пояс / Город: ${timezone}
-      Платформа: ${platform}
-      Лицензия или пиратка: ${license}
-      Время для игры: ${playTime}
-      Опыт в Minecraft: ${experience}
-      Любимые занятия в игре: ${hobbies}
-      Опыт в командах / на серверах: ${teamExperience}
-      Используешь моды / аддоны?: ${mods}
-      Соблюдаешь ли правила и уважаешь других?: ${rules}
-      Умеешь ли строить?: ${buildSkills}
-      Играешь ли ты ради фана, командной игры или достижений?: ${playReason}
-      Почему хочешь в Star House?: ${whyStarHouse}
-      Готов ли помочь проекту чем-то ещё?: ${helpProject}
-    `;
-    const chatId = "6011272640"; // Твой ID в Telegram
-    const botToken = "7779736455:AAEX1IT46gx2OSitkIICS8ME6oDGM8hWjlo"; // Токен твоего бота
-
-    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id: chatId, text: text })
-    }).then(res => {
-      if (res.ok) {
-        alert("Анкета отправлена!");
-        form.reset();
-      } else {
-        alert("Ошибка при отправке!");
-      }
-    });
-  });
-});
-  </script>
 </body>
 </html>
