@@ -4,37 +4,47 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Star House — Minecraft Team</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      background-color: #fdfdfd;
+      background-color: #fefefe;
       color: #222;
       font-family: Arial, sans-serif;
+      margin: 0;
       transition: background 0.3s, color 0.3s;
     }
+
     body.dark {
       background-color: #121212;
-      color: #eee;
+      color: #f0f0f0;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .contact-form {
+      max-width: 600px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
     }
 
     input, textarea, select {
       width: 100%;
       padding: 10px;
-      margin: 6px 0 16px;
-      border: 1px solid #ccc;
+      margin-top: 6px;
+      border: 2px solid #888;
       border-radius: 8px;
+      box-sizing: border-box;
       background-color: #fff;
       color: #000;
-      box-sizing: border-box;
       transition: background 0.3s, color 0.3s, border 0.3s;
-    }
-
-    body.dark input,
-    body.dark textarea,
-    body.dark select {
-      background-color: #1f1f1f;
-      color: #fff;
-      border-color: #444;
     }
 
     textarea {
@@ -42,8 +52,17 @@
       overflow-y: hidden;
     }
 
+    body.dark input,
+    body.dark textarea,
+    body.dark select {
+      background-color: #1e1e1e;
+      color: #fff;
+      border-color: #888;
+    }
+
     button {
-      padding: 10px 20px;
+      margin-top: 20px;
+      padding: 12px 24px;
       border: none;
       border-radius: 8px;
       background-color: #0077ff;
@@ -53,18 +72,7 @@
     }
 
     button:hover {
-      background-color: #005fe0;
-    }
-
-    header, footer {
-      text-align: center;
-      padding: 16px;
-    }
-
-    .contact-form {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
+      background-color: #005ad1;
     }
   </style>
 </head>
@@ -85,55 +93,57 @@
       </p>
     </section>
 
-    <!-- Анкета -->
     <section class="contact-form">
-      <h2>Заполните анкету</h2>
+      <h2>Анкета</h2>
       <form id="tgForm">
-        <label for="nickname">1. Имя / Никнейм:</label>
-        <input type="text" name="Имя / Никнейм" id="nickname" required>
+        <label>Имя / Никнейм:</label>
+        <input type="text" name="Имя / Никнейм" required>
 
-        <label for="age">2. Возраст:</label>
-        <input type="text" name="Возраст" id="age" required>
+        <label>Возраст:</label>
+        <input type="text" name="Возраст" required>
 
-        <label for="timezone">3. Часовой пояс / Город:</label>
-        <input type="text" name="Часовой пояс / Город" id="timezone" required>
+        <label>Часовой пояс / Город:</label>
+        <input type="text" name="Часовой пояс / Город" required>
 
-        <label for="platform">4. Платформа:</label>
-        <input type="text" name="Платформа" id="platform" required>
+        <label>Платформа:</label>
+        <select name="Платформа" required>
+          <option value="Bedrock">Bedrock</option>
+          <option value="Java">Java</option>
+        </select>
 
-        <label for="experience">5. Опыт в Minecraft:</label>
-        <textarea name="Опыт в Minecraft" id="experience" required></textarea>
+        <label>Опыт в Minecraft:</label>
+        <textarea name="Опыт в Minecraft" required></textarea>
 
-        <label for="hobbies">6. Любимые занятия в игре:</label>
-        <input type="text" name="Любимые занятия" id="hobbies" required>
+        <label>Любимые занятия в игре:</label>
+        <input type="text" name="Любимые занятия" required>
 
-        <label for="team_experience">7. Опыт в командах / на серверах:</label>
-        <input type="text" name="Опыт в командах" id="team_experience" required>
+        <label>Опыт в командах / на серверах:</label>
+        <input type="text" name="Опыт в командах / на серверах" required>
 
-        <label for="rules">8. Соблюдаешь ли правила и уважаешь других?:</label>
-        <select name="Соблюдает правила" id="rules" required>
+        <label>Соблюдаешь ли правила и уважаешь других?</label>
+        <select name="Соблюдает правила" required>
           <option value="Да">Да</option>
           <option value="Нет">Нет</option>
         </select>
 
-        <label for="build_skills">9. Умеешь ли строить?:</label>
-        <select name="Умеет строить" id="build_skills" required>
+        <label>Умеешь ли строить?</label>
+        <select name="Умеет строить" required>
           <option value="Да">Да</option>
           <option value="Нет">Нет</option>
           <option value="Немного">Немного</option>
         </select>
 
-        <label for="why_star_house">10. Почему хочешь в Star House?:</label>
-        <textarea name="Почему в Star House" id="why_star_house" required></textarea>
+        <label>Почему хочешь в Star House?</label>
+        <textarea name="Почему в Star House" required></textarea>
 
-        <label for="help_project">11. Готов ли помочь проекту чем-то ещё?:</label>
-        <textarea name="Помощь проекту" id="help_project"></textarea>
+        <label>Готов ли помочь проекту чем-то ещё?</label>
+        <textarea name="Помощь проекту"></textarea>
 
-        <label for="telegram">12. Ваш юзернейм в Telegram:</label>
-        <input type="text" name="Telegram" id="telegram" required>
+        <label>Ваш юзернейм в Telegram:</label>
+        <input type="text" name="Telegram" required>
 
-        <label for="mcversion">13. Ваша версия Minecraft? (у нас 1.21.70):</label>
-        <input type="text" name="Версия Minecraft" id="mcversion" required>
+        <label>Ваша версия Minecraft (у нас 1.21.70):</label>
+        <input type="text" name="Версия Minecraft" required>
 
         <button type="submit">Отправить</button>
       </form>
@@ -145,13 +155,13 @@
   </footer>
 
   <script>
-    // Тема
+    // Переключение темы
     document.getElementById("theme-toggle").addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
 
     // Авторасширение textarea
-    document.querySelectorAll("textarea").forEach((textarea) => {
+    document.querySelectorAll("textarea").forEach(textarea => {
       textarea.setAttribute("style", "height:auto;overflow-y:hidden;");
       textarea.addEventListener("input", () => {
         textarea.style.height = "auto";
@@ -159,28 +169,31 @@
       });
     });
 
-    // Telegram отправка
+    // Отправка анкеты в Telegram
     document.getElementById("tgForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const botToken = "7779736455:AAEX1IT46gx2OSitkIICS8ME6oDGM8hWjlo";
       const chatId = "6011272640";
 
       const formData = new FormData(this);
-      let text = "📨 *Новая анкета Star House:*\n\n";
+      let message = "📨 Новая анкета Star House:\n\n";
       formData.forEach((value, key) => {
-        text += `*${key}*: ${value}\n`;
+        message += `${key}: ${value}\n`;
       });
 
       fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: "Markdown" })
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: message
+        })
       }).then(res => {
         if (res.ok) {
           alert("Анкета успешно отправлена!");
           this.reset();
         } else {
-          alert("Ошибка при отправке в Telegram!");
+          alert("Ошибка при отправке.");
         }
       });
     });
