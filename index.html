@@ -5,24 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Star House — Minecraft Team</title>
   <style>
-    body {
-      background-color: #fefefe;
-      color: #222;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      transition: background 0.3s, color 0.3s;
+    :root {
+      --bg-color: #f5f5f5;
+      --text-color: #222;
+      --accent-color: #ff77aa;
     }
 
     body.dark {
-      background-color: #121212;
-      color: #f0f0f0;
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --accent-color: #ff99cc;
     }
 
-    header, footer {
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    header {
       text-align: center;
-      padding: 20px;
+      padding: 2rem 1rem;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
     }
 
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    .slogan {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    #theme-toggle {
+      background-color: var(--accent-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    main {
+      padding: 2rem 1rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 2rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: #f0f0f0;
+      color: #555;
+    }
+
+    body.dark footer {
+      background-color: #2c2c2c;
+      color: #aaa;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.3rem;
+      }
+
+      .slogan {
+        font-size: 1rem;
+      }
+
+      #theme-toggle {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+
+      main {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .slogan {
+        font-size: 0.95rem;
+      }
+
+      #theme-toggle {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+
+    /* Стиль формы */
     .contact-form {
       max-width: 600px;
       margin: auto;
@@ -184,30 +271,4 @@
       message += `🌍 **Платформа:** ${formData.get('Платформа')}\n`;
       message += `🎮 **Опыт в Minecraft:** ${formData.get('Опыт в Minecraft')}\n`;
       message += `💬 **Любимые занятия в игре:** ${formData.get('Любимые занятия')}\n`;
-      message += `👥 **Опыт в командах / на серверах:** ${formData.get('Опыт в командах / на серверах')}\n`;
-      message += `✅ **Соблюдаешь ли правила и уважаешь других?:** ${formData.get('Соблюдает правила')}\n`;
-      message += `🏗️ **Умеешь ли строить?:** ${formData.get('Умеет строить')}\n`;
-      message += `🌟 **Почему хочешь в Star House?:** ${formData.get('Почему в Star House')}\n`;
-      message += `🤝 **Готов ли помочь проекту чем-то ещё?:** ${formData.get('Помощь проекту')}\n`;
-      message += `📱 **Ваш юзернейм в Telegram:** ${formData.get('Telegram')}\n`;
-      message += `📊 **Ваша версия Minecraft (у нас 1.21.70):** ${formData.get('Версия Minecraft')}\n`;
-
-      fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: message
-        })
-      }).then(res => {
-        if (res.ok) {
-          alert("Анкета успешно отправлена!");
-          this.reset();
-        } else {
-          alert("Ошибка при отправке.");
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+      message += `👥 **Опыт в командах / на серверах:** ${formData.get
