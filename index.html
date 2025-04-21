@@ -6,16 +6,38 @@
   <title>Star House — Minecraft Team</title>
   <link rel="stylesheet" href="style.css" />
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --input-bg: #f9f9f9;
+      --input-border: #ccc;
+    }
+
+    body.dark {
+      --bg: #121212;
+      --text: #ffffff;
+      --input-bg: #1e1e1e;
+      --input-border: #444;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      font-family: Arial, sans-serif;
+    }
+
     input, textarea, select {
+      background-color: var(--input-bg);
+      color: var(--text);
+      border: 1px solid var(--input-border);
       width: 100%;
       max-width: 500px;
       padding: 10px 14px;
       margin: 10px 0 20px 0;
-      border: 1px solid #ccc;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       font-size: 16px;
-      font-family: inherit;
       transition: all 0.2s ease-in-out;
     }
 
@@ -127,6 +149,12 @@
     <p>© 2025 Star House Team | Minecraft Forever!</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Переключение темы
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+  </script>
 </body>
 </html>
