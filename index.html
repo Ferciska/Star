@@ -6,69 +6,64 @@
   <title>Star House — Minecraft Team</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --input-bg: #f0f0f0;
-      --input-border: #888;
-    }
-    body.dark {
-      --bg: #121212;
-      --text: #ffffff;
-      --input-bg: #1f1f1f;
-      --input-border: #666;
-    }
-
     body {
-      background-color: var(--bg);
-      color: var(--text);
+      background-color: #fdfdfd;
+      color: #222;
       font-family: Arial, sans-serif;
       transition: background 0.3s, color 0.3s;
     }
+    body.dark {
+      background-color: #121212;
+      color: #eee;
+    }
 
     input, textarea, select {
-      background-color: var(--input-bg);
-      color: var(--text);
-      border: 1px solid var(--input-border);
       width: 100%;
-      max-width: 500px;
-      padding: 10px 14px;
-      margin: 10px 0 20px 0;
-      border-radius: 10px;
-      font-size: 16px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 10px;
+      margin: 6px 0 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+      color: #000;
+      box-sizing: border-box;
       transition: background 0.3s, color 0.3s, border 0.3s;
     }
 
-    input:focus, textarea:focus, select:focus {
-      outline: none;
-      border-color: #00aaff;
-      box-shadow: 0 0 8px rgba(0,170,255,0.4);
+    body.dark input,
+    body.dark textarea,
+    body.dark select {
+      background-color: #1f1f1f;
+      color: #fff;
+      border-color: #444;
     }
 
-    label {
-      font-weight: bold;
-      display: block;
-      margin-top: 10px;
+    textarea {
+      resize: none;
+      overflow-y: hidden;
     }
 
-    button[type="submit"] {
-      background: #00aaff;
-      color: white;
-      padding: 12px 20px;
-      font-size: 16px;
+    button {
+      padding: 10px 20px;
       border: none;
-      border-radius: 12px;
+      border-radius: 8px;
+      background-color: #0077ff;
+      color: white;
+      font-size: 16px;
       cursor: pointer;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      transition: background 0.3s;
     }
 
-    button[type="submit"]:hover {
-      background: #008ecc;
+    button:hover {
+      background-color: #005fe0;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 16px;
     }
 
     .contact-form {
+      max-width: 600px;
+      margin: auto;
       padding: 20px;
     }
   </style>
@@ -83,60 +78,62 @@
   <main>
     <section class="intro">
       <h2>Привет!</h2>
-      <p>Рады, что ты заинтересовался нашим проектом.<br>
+      <p>
+        Рады, что ты заинтересовался нашим проектом.<br>
         Star House — это тёплое комьюнити, интересные сборки и совместное выживание.<br>
         Заполни анкету — и добро пожаловать в команду!
       </p>
     </section>
 
+    <!-- Анкета -->
     <section class="contact-form">
       <h2>Заполните анкету</h2>
       <form id="tgForm">
         <label for="nickname">1. Имя / Никнейм:</label>
-        <input type="text" name="nickname" id="nickname" required>
+        <input type="text" name="Имя / Никнейм" id="nickname" required>
 
         <label for="age">2. Возраст:</label>
-        <input type="text" name="age" id="age" required>
+        <input type="text" name="Возраст" id="age" required>
 
         <label for="timezone">3. Часовой пояс / Город:</label>
-        <input type="text" name="timezone" id="timezone" required>
+        <input type="text" name="Часовой пояс / Город" id="timezone" required>
 
         <label for="platform">4. Платформа:</label>
-        <input type="text" name="platform" id="platform" required>
+        <input type="text" name="Платформа" id="platform" required>
 
-        <label for="telegram">5. Ваш юзернейм в Telegram:</label>
-        <input type="text" name="telegram" id="telegram" required>
+        <label for="experience">5. Опыт в Minecraft:</label>
+        <textarea name="Опыт в Minecraft" id="experience" required></textarea>
 
-        <label for="mc_version">6. Ваша версия Minecraft? (у нас 1.21.70):</label>
-        <input type="text" name="mc_version" id="mc_version" required>
+        <label for="hobbies">6. Любимые занятия в игре:</label>
+        <input type="text" name="Любимые занятия" id="hobbies" required>
 
-        <label for="experience">7. Опыт в Minecraft:</label>
-        <textarea name="experience" id="experience" required></textarea>
+        <label for="team_experience">7. Опыт в командах / на серверах:</label>
+        <input type="text" name="Опыт в командах" id="team_experience" required>
 
-        <label for="hobbies">8. Любимые занятия в игре:</label>
-        <input type="text" name="hobbies" id="hobbies" required>
-
-        <label for="team_experience">9. Опыт в командах / на серверах:</label>
-        <input type="text" name="team_experience" id="team_experience" required>
-
-        <label for="rules">10. Соблюдаешь ли правила и уважаешь других?:</label>
-        <select name="rules" id="rules" required>
+        <label for="rules">8. Соблюдаешь ли правила и уважаешь других?:</label>
+        <select name="Соблюдает правила" id="rules" required>
           <option value="Да">Да</option>
           <option value="Нет">Нет</option>
         </select>
 
-        <label for="build_skills">11. Умеешь ли строить?:</label>
-        <select name="build_skills" id="build_skills" required>
+        <label for="build_skills">9. Умеешь ли строить?:</label>
+        <select name="Умеет строить" id="build_skills" required>
           <option value="Да">Да</option>
           <option value="Нет">Нет</option>
           <option value="Немного">Немного</option>
         </select>
 
-        <label for="why_star_house">12. Почему хочешь в Star House?:</label>
-        <textarea name="why_star_house" id="why_star_house" required></textarea>
+        <label for="why_star_house">10. Почему хочешь в Star House?:</label>
+        <textarea name="Почему в Star House" id="why_star_house" required></textarea>
 
-        <label for="help_project">13. Готов ли помочь проекту чем-то ещё?:</label>
-        <textarea name="help_project" id="help_project"></textarea>
+        <label for="help_project">11. Готов ли помочь проекту чем-то ещё?:</label>
+        <textarea name="Помощь проекту" id="help_project"></textarea>
+
+        <label for="telegram">12. Ваш юзернейм в Telegram:</label>
+        <input type="text" name="Telegram" id="telegram" required>
+
+        <label for="mcversion">13. Ваша версия Minecraft? (у нас 1.21.70):</label>
+        <input type="text" name="Версия Minecraft" id="mcversion" required>
 
         <button type="submit">Отправить</button>
       </form>
@@ -148,22 +145,28 @@
   </footer>
 
   <script>
-    // Переключение темы
-    const toggleBtn = document.getElementById("theme-toggle");
-    toggleBtn.addEventListener("click", () => {
+    // Тема
+    document.getElementById("theme-toggle").addEventListener("click", () => {
       document.body.classList.toggle("dark");
     });
 
-    // Отправка в Telegram
+    // Авторасширение textarea
+    document.querySelectorAll("textarea").forEach((textarea) => {
+      textarea.setAttribute("style", "height:auto;overflow-y:hidden;");
+      textarea.addEventListener("input", () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      });
+    });
+
+    // Telegram отправка
     document.getElementById("tgForm").addEventListener("submit", function (e) {
       e.preventDefault();
-
       const botToken = "7779736455:AAEX1IT46gx2OSitkIICS8ME6oDGM8hWjlo";
       const chatId = "6011272640";
 
       const formData = new FormData(this);
       let text = "📨 *Новая анкета Star House:*\n\n";
-
       formData.forEach((value, key) => {
         text += `*${key}*: ${value}\n`;
       });
@@ -171,17 +174,13 @@
       fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          chat_id: chatId,
-          text: text,
-          parse_mode: "Markdown"
-        })
+        body: JSON.stringify({ chat_id: chatId, text: text, parse_mode: "Markdown" })
       }).then(res => {
         if (res.ok) {
           alert("Анкета успешно отправлена!");
           this.reset();
         } else {
-          alert("Ошибка отправки в Telegram!");
+          alert("Ошибка при отправке в Telegram!");
         }
       });
     });
